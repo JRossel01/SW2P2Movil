@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/indexTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Citas Pendientes"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal" />
+
+    <ListView
+        android:id="@+id/appointmentList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="16dp"
+        android:padding="4dp"
+        android:clipToPadding="false"
+        android:listSelector="@android:color/transparent"/>
+</LinearLayout>
