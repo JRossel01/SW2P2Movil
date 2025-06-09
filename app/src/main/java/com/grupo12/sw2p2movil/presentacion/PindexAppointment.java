@@ -1,4 +1,4 @@
-package com.grupo12.sw2p2movil.presentacion.Pappointment;
+package com.grupo12.sw2p2movil.presentacion;
 
 import android.os.Bundle;
 
@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grupo12.sw2p2movil.R;
-import com.grupo12.sw2p2movil.negocio.Nappointment.NindexAppointment;
-import com.grupo12.sw2p2movil.negocio.Ndoctor.NdoctorIndex;
+import com.grupo12.sw2p2movil.negocio.NindexAppointment;
+import com.grupo12.sw2p2movil.negocio.NdoctorIndex;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

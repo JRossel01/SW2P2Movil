@@ -1,9 +1,9 @@
-package com.grupo12.sw2p2movil.negocio.Ndoctor;
+package com.grupo12.sw2p2movil.negocio;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.grupo12.sw2p2movil.dato.Ddoctor.DdoctorIndex;
+import com.grupo12.sw2p2movil.dato.DdoctorIndex;
 
 import org.json.JSONObject;
 

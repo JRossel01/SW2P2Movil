@@ -1,4 +1,4 @@
-package com.grupo12.sw2p2movil.dato.Ddoctor;
+package com.grupo12.sw2p2movil.dato;
 
 import static com.grupo12.sw2p2movil.util.Constantes.GRAPHQL_URL;
 
@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -14,25 +15,18 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DdoctorIndex {
-    public JSONObject obtenerDoctorPorId(Context context, int doctorId) {
+public class DindexAppointment {
+    public JSONArray obtenerCitasPendientes(Context context) {
         try {
             SharedPreferences prefs = context.getSharedPreferences("session", Context.MODE_PRIVATE);
             String jwt = prefs.getString("jwt", null);
+            int patientId = prefs.getInt("patientId", -1);
 
-            if (jwt == null) {
-                Log.e("Ddoctor", "JWT no disponible");
+            if (jwt == null || patientId == -1) {
+                Log.e("Dappointment", "JWT o patientId no disponible");
                 return null;
             }
 
-            // Construir la query GraphQL
-            String query = "query GetDoctorWithUserById($doctorId: Int!) { getDoctorWithUserById(doctorId: $doctorId) { name specialty } }";
-            String jsonInput = new JSONObject()
-                    .put("query", query)
-                    .put("variables", new JSONObject().put("doctorId", doctorId))
-                    .toString();
-
-            // Hacer la conexión
             URL url = new URL(GRAPHQL_URL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
@@ -40,12 +34,17 @@ public class DdoctorIndex {
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
 
+            String query = "query GetAppointmentsByPatient($patientId: Int!) { getAppointmentsByPatient(patientId: $patientId) { id date time status reason patientId doctorId } }";
+            String jsonInput = new JSONObject()
+                    .put("query", query)
+                    .put("variables", new JSONObject().put("patientId", patientId))
+                    .toString();
+
             OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
             writer.write(jsonInput);
             writer.flush();
             writer.close();
 
-            // Leer la respuesta
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuilder response = new StringBuilder();
             String line;
@@ -55,10 +54,10 @@ public class DdoctorIndex {
             reader.close();
 
             JSONObject jsonResponse = new JSONObject(response.toString());
-            return jsonResponse.getJSONObject("data").getJSONObject("getDoctorWithUserById");
+            return jsonResponse.getJSONObject("data").getJSONArray("getAppointmentsByPatient");
 
         } catch (Exception e) {
-            Log.e("Ddoctor", "Error al obtener doctor", e);
+            Log.e("Dappointment", "Error al obtener citas", e);
             return null;
         }
     }

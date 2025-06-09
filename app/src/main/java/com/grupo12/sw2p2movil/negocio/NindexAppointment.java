@@ -1,8 +1,8 @@
-package com.grupo12.sw2p2movil.negocio.Nappointment;
+package com.grupo12.sw2p2movil.negocio;
 
 import android.content.Context;
 
-import com.grupo12.sw2p2movil.dato.Dappointment.DindexAppointment;
+import com.grupo12.sw2p2movil.dato.DindexAppointment;
 
 import org.json.JSONArray;
 

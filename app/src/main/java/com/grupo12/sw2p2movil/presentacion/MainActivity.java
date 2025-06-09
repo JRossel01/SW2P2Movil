@@ -10,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.grupo12.sw2p2movil.R;
 import com.grupo12.sw2p2movil.negocio.Nlogout;
-import com.grupo12.sw2p2movil.presentacion.Pappointment.PindexAppointment;
 
 public class MainActivity extends AppCompatActivity {
 
     Button logoutBtn;
     Button appointmentsBtn;
+    Button createAppointmentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +27,17 @@ public class MainActivity extends AppCompatActivity {
         TextView welcomeText = findViewById(R.id.welcomeText);
         logoutBtn = findViewById(R.id.logoutBtn);
         appointmentsBtn = findViewById(R.id.appointmentsBtn);
+        createAppointmentBtn = findViewById(R.id.createAppointmentBtn);
 
         // Ver citas pendientes
         appointmentsBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, PindexAppointment.class);
+            startActivity(intent);
+        });
+
+        // Crear cita
+        createAppointmentBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Passistant.class);
             startActivity(intent);
         });
 
