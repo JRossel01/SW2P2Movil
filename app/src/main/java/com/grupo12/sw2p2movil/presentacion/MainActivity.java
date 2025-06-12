@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button logoutBtn;
     Button appointmentsBtn;
     Button createAppointmentBtn;
+    Button documentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         logoutBtn = findViewById(R.id.logoutBtn);
         appointmentsBtn = findViewById(R.id.appointmentsBtn);
         createAppointmentBtn = findViewById(R.id.createAppointmentBtn);
+        documentBtn = findViewById(R.id.documentBtn);
 
         // Ver citas pendientes
         appointmentsBtn.setOnClickListener(v -> {
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         // Crear cita
         createAppointmentBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, Passistant.class);
+            startActivity(intent);
+        });
+
+        // Solicitar y ver historial médico
+        documentBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Pdocument.class);
             startActivity(intent);
         });
 

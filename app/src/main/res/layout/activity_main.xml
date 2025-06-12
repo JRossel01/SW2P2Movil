@@ -68,6 +68,18 @@
             android:padding="12dp"
             android:elevation="4dp"
             android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/documentBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Historial médico"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#00838F"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:elevation="4dp"
+            android:layout_marginTop="12dp" />
     </LinearLayout>
 
     <!-- Cerrar sesión -->
